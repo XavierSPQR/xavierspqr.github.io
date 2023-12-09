@@ -80,7 +80,7 @@
 		</div></center>
 		<div class="cbox">
 		<div class="det"><a href="subjects/computer_courses.html"><img src="images/courses/computer.png">ICT Courses</a></div>
-		<div class="det"><a href="subjects/computer_courses.html#data"><img src="images/courses/data.png">Automobile Courses</a></div>
+		
 		<div class="det"><a href="subjects/computer_courses.html#algo"><img src="images/courses/algo.png">Technical Courses</a></div>
 		<div class="det det-last"><a href="subjects/computer_courses.html#projects"><img src="images/courses/projects.png">Projects</a></div>
 		</div>
@@ -235,7 +235,7 @@
 		<div class="csec"></div>
 		<div class="back-contact">
 			<div class="cc">
-			<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+			<form action="https://formspree.io/f/meqbyzdg" method="post" enctype="text/plain">
 				<label>First Name <span class="imp">*</span></label><label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
 				<center>
 				<input type="text" name="" style="margin-right: 10px; width: 175px" required="required"><input type="text" name="lname" style="width: 175px" required="required"><br>
@@ -263,15 +263,40 @@
 
 	<div class="feedbox">
 		<div class="feed">
-			<form action="process_form.php" method="post">
+			<form action="javascript:void(0)" method="post">
 				<label>Your Name</label><br>
 				<input type="text" name="fname" class="fname" required="required"><br>
 				<label>Email</label><br>
 				<input type="email" name="mail" required="required"><br>
 				<label>Additional Details</label><br>
 				<textarea name="additional"></textarea><br>
-				<button type="submit" id="csubmit">Send Message</button>
-			</form>
+				<button type="button" id="csubmit">Send Message</button>
+			  </form>
+			  
+			  <script>
+				const form = document.forms[0];
+				const submitButton = document.getElementById('csubmit');
+			  
+				submitButton.addEventListener('click', () => {
+				  const formData = new FormData(form);
+				  fetch('https://formspree.io/f/myyqrpvk', {
+					method: 'POST',
+					body: formData
+				  })
+					.then(response => {
+					  if (response.ok) {
+						alert('Message sent successfully!');
+						form.reset();
+					  } else {
+						alert('There was an error sending your message. Please try again later.');
+					  }
+					})
+					.catch(error => {
+					  console.error(error);
+					  alert('An unknown error occurred. Please try again later.');
+					});
+				});
+			  </script>
 		</div>
 	</div>
 	
